@@ -5,6 +5,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Locação - Biblioteca Virtual Acadêmica</title>
+
+
+
     <style>
         * {
             margin: 0;
@@ -273,6 +276,7 @@
 </head>
 <body>
 
+
 <header>
     <h1>Biblioteca Virtual Acadêmica</h1>
     <p>Empréstimo e controle de livros</p>
@@ -291,8 +295,8 @@
         <h2>Formulário de Locação</h2>
 
         <form method="post" action="{% url 'locacao' %}">
-    {% csrf_token %}
 
+    {% csrf_token %}
     <label for="id_nome">Nome do aluno</label>
     <input type="text"
            name="nome"
@@ -300,7 +304,6 @@
            value="{{ request.POST.nome}}"
            required>
     {{ form.nome.errors }}
-
     <label for="id_cpf">CPF</label>
     <input type="text"
            name="cpf"
@@ -331,7 +334,6 @@
            value="{{ form.data_devolucao.value|default_if_none:'' }}"
            required>
     {{ form.data_devolucao.errors }}
-
     <button type="submit">Solicitar Locação</button>
 </form>
 

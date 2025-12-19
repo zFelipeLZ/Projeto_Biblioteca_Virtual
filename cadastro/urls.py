@@ -10,5 +10,5 @@ urlpatterns = [
     path('livros/', livros, name='livros'),
     path('contato/', contato, name='contato'),
     path('filtro/', filtro_livros_locados, name='filtro'),
-     path('confirmacao/<int:livro_id>/', confirmacao_locacao, name='confirmacao_locacao'),
+    path('confirmacao/<int:livro_id>/', confirmacao_locacao, name='confirmacao_locacao'),
 ]
