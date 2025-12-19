@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Filtro de Livros Locados - Biblioteca Virtual</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f4f6f8;
+            color: #2c2c2c;
+        }
+
+        header {
+            background-color: #1f3a5f;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #e3e8ee;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: #1f3a5f;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 600;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        section h2 {
+            color: #1f3a5f;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #d0d7df;
+            padding-bottom: 5px;
+        }
+
+        .form-filtro {
+            background: #fff;
+            padding: 20px;
+            border: 1px solid #d0d7df;
+            border-radius: 6px;
+            margin-bottom: 30px;
+        }
+
+        .form-filtro label {
+            display: block;
+            margin-top: 10px;
+            font-weight: 600;
+        }
+
+        .form-filtro input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+        }
+
+        .form-filtro button {
+            margin-top: 15px;
+            padding: 10px;
+            width: 100%;
+            background-color: #1f3a5f;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        .livros {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .livro {
+            background: #fff;
+            padding: 15px;
+            border: 1px solid #d0d7df;
+            border-radius: 6px;
+        }
+
+        .livro h3 {
+            margin-bottom: 5px;
+        }
+
+        .livro a {
+            color: #1f3a5f;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .livro a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            background-color: #1f3a5f;
+            color: #fff;
+            text-align: center;
+            padding: 15px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Biblioteca Virtual Acadêmica</h1>
+    <p>Filtro de livros locados</p>
+</header>
+
+<nav>
+    <a href="{% url 'home' %}">Início</a>
+    <a href="{% url 'filtro' %}">Filtro</a>
+    <a href="{% url 'locacao' %}">Locação</a>
+</nav>
+
+<main>
+
+    <section>
+        <h2>Filtrar Livros Locados</h2>
+
+        <form method="get" class="form-filtro">
+            <label>Autor</label>
+            <input type="text" name="autor" value="{{ request.GET.autor }}">
+
+            <label>Área</label>
+            <input type="text" name="area" value="{{ request.GET.area }}">
+
+            <button type="submit">Aplicar filtro</button>
+        </form>
+    </section>
+
+    <section>
+        <h2>Resultados</h2>
+
+        <div class="livros">
+            {% for livro in livros %}
+                <div class="livro">
+                    <h3>{{ livro.titulo }}</h3>
+                    <p>Autor: {{ livro.autor }}</p>
+                    <p>Área: {{ livro.area }}</p>
+
+                    <a href="{% url 'confirmacao_locacao' livro.id %}">
+                        Ver detalhes da locação
+                    </a>
+                </div>
+            {% empty %}
+                <p>Nenhum livro locado encontrado.</p>
+            {% endfor %}
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <p>&copy; 2025 - Biblioteca Virtual Acadêmica</p>
+</footer>
+
+</body>
+</html>

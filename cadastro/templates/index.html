@@ -1,0 +1,287 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Início - Biblioteca Virtual</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f4f6f8;
+            color: #2c2c2c;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #1f3a5f;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            margin-bottom: 5px;
+        }
+
+        header p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        nav {
+            background-color: #e3e8ee;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: #1f3a5f;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 600;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .form-locacao {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 6px;
+            border: 1px solid #d0d7df;
+        }
+
+        .form-locacao label {
+            display: block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: #1f3a5f;
+        }
+
+        .form-locacao input,
+        .form-locacao select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            font-size: 0.95rem;
+        }
+
+        .form-locacao input:focus,
+        .form-locacao select:focus {
+            outline: none;
+            border-color: #1f3a5f;
+        }
+
+        .form-locacao button {
+            margin-top: 25px;
+            padding: 12px;
+            width: 100%;
+            background-color: #1f3a5f;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .form-locacao button:hover {
+            background-color: #162c47;
+        }
+
+        .info-locacao {
+            margin-top: 25px;
+            font-size: 0.9rem;
+            color: #555;
+            background-color: #f0f3f7;
+            padding: 15px;
+            border-left: 4px solid #1f3a5f;
+        }
+
+        .info-locacao ul {
+            margin-top: 10px;
+            padding-left: 20px;
+        }
+
+
+        section {
+            margin-bottom: 40px;
+        }
+
+        section h2 {
+            color: #1f3a5f;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #d0d7df;
+            padding-bottom: 5px;
+        }
+
+        .livros {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .livro {
+            background-color: #ffffff;
+            border: 1px solid #d0d7df;
+            border-radius: 6px;
+            padding: 15px;
+            transition: box-shadow 0.3s;
+        }
+
+        .livro:hover {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .livro h3 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: #2a2a2a;
+        }
+
+        .livro p {
+            font-size: 0.95rem;
+            margin-bottom: 5px;
+        }
+
+        .livro span {
+            font-size: 0.85rem;
+            color: #555;
+        }
+
+        .form-locacao {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 6px;
+            border: 1px solid #d0d7df;
+        }
+
+        .form-locacao label {
+            display: block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: #1f3a5f;
+        }
+
+        .form-locacao input,
+        .form-locacao select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            font-size: 0.95rem;
+        }
+
+        .form-locacao input:focus,
+        .form-locacao select:focus {
+            outline: none;
+            border-color: #1f3a5f;
+        }
+
+        .form-locacao button {
+            margin-top: 25px;
+            padding: 12px;
+            width: 100%;
+            background-color: #1f3a5f;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .form-locacao button:hover {
+            background-color: #162c47;
+        }
+
+        .info-locacao {
+            margin-top: 25px;
+            font-size: 0.9rem;
+            color: #555;
+            background-color: #f0f3f7;
+            padding: 15px;
+            border-left: 4px solid #1f3a5f;
+        }
+
+        .info-locacao ul {
+            margin-top: 10px;
+            padding-left: 20px;
+        }
+
+
+        footer {
+            background-color: #1f3a5f;
+            color: #ffffff;
+            text-align: center;
+            padding: 15px;
+            margin-top: 40px;
+            font-size: 0.9rem;
+        }
+
+        .form-locacao {
+            margin-top: 20px;
+        }
+
+        .form-locacao input,
+        .form-locacao select {
+            background-color: #fafafa;
+        }
+
+        .form-locacao button {
+            letter-spacing: 0.5px;
+        }
+
+        .info-locacao {
+            margin-bottom: 20px;
+        }
+
+
+    </style>
+
+</head>
+<body>
+
+<header>
+    <h1>Biblioteca Virtual Acadêmica</h1>
+    <p>Portal de acesso ao conhecimento</p>
+</header>
+
+<nav>
+    <a href="{% url 'home' %}">Início</a>
+    <a href="{% url 'livros' %}">Livros</a>
+    <a href="{% url 'locacao' %}">Locação</a>
+    <a href="{% url 'contato' %}">Contato</a>
+    <a href="{% url 'filtro' %}">Filtro</a>
+</nav>
+
+<main>
+    <h2>Bem-vindo</h2>
+    <p>
+        A Biblioteca Virtual Acadêmica foi criada para apoiar estudantes, professores
+        e pesquisadores, oferecendo acesso organizado a livros e artigos científicos.
+    </p>
+</main>
+
+</body>
+</html>
